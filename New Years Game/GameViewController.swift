@@ -20,6 +20,8 @@ class GameViewController: UIViewController {
         Player(name: "Laura", emoji: "👩‍👧‍👦"), Player(name: "Niklas", emoji: "👩🏼‍🚒"),
         Player(name: "Lærke", emoji: "💆🏼‍♀️"), Player(name: "Henrik", emoji: "👨🏼‍🍳"),
         Player(name: "Henriks søn", emoji: "⛹🏼")]
+    var currentQuestion: Question
+    var currentPlayer: Player
     
     var questions = [
         Question(description: "Hvad går den anden leg i Squid Game ud på?", points: 2,  answer: "Tug of war/Tovtrækning"),
@@ -78,23 +80,23 @@ class GameViewController: UIViewController {
     
     private func refresh() {
         answerLabel.isHidden = true
-        let previousPlayer = activePlayerLabel.text;
-        var activePlayer = players.randomElement()
-        while(previousPlayer == activePlayer!.name) {
-            activePlayer = players.randomElement()
+        let previousPlayer = activePlayerLabel.text
+        currentPlayer = players.randomElement()!
+        while(previousPlayer == currentPlayer.name) {
+            currentPlayer = players.randomElement()!
         }
         if(questions.isEmpty) {
             questionLabel.text = "Det var det sidste spørgsmål"
             answerLabel.text = "Vi har ikke flere svar 😱"
             activePlayerLabel.text = "Færdig"
         } else {
-            let question = questions.randomElement()
-            questions = questions.filter{$0.description != question!.description}
-            let sips = question!.points == 1 ? "tår" : "tåre"
-            let newQuestion = "\(question!.description)\n\nTag \(question!.points) \(sips) hvis du svarer forkert eller ikke vil svare ❌\n\nGiv 1 tår væk hvis du svarer rigtigt ✅"
+            currentQuestion = questions.randomElement()!
+            questions = questions.filter{$0.description != currentQuestion.description}
+            let points = currentQuestion.points == 1 ? "tår" : "tåre"
+            let newQuestion = "\(currentQuestion.description)\n\nTag \(currentQuestion.points) \(points) hvis du svarer forkert eller ikke vil svare ❌\n\nGiv 1 tår væk hvis du svarer rigtigt ✅"
             changeText(newText: newQuestion, label: questionLabel)
-            changeText(newText: question!.answer, label: answerLabel)
-            changeText(newText: activePlayer!.name, label: activePlayerLabel)
+            changeText(newText: currentQuestion.answer, label: answerLabel)
+            changeText(newText: currentPlayer.name, label: activePlayerLabel)
         }
     }
     
@@ -112,6 +114,7 @@ class GameViewController: UIViewController {
     }
 
     @IBAction func rightAnswerPressed(_ sender: Any) {
+        currentPlayer.points += currentQuestion.points
         refresh()
     }
     
