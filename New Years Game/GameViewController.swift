@@ -15,13 +15,14 @@ class GameViewController: UIViewController {
     @IBOutlet weak var showAnswerButton: UIButton!
     @IBOutlet weak var answerLabel: UILabel!
     @IBOutlet weak var correctAnswerButton: UIButton!
+    @IBOutlet weak var leaderboardLabel: UILabel!
     
     var players = [Player(name: "Seb", emoji: "👨🏼‍💻"), Player(name: "Amalie", emoji: "👩‍👧‍👦"),
         Player(name: "Laura", emoji: "👩‍👧‍👦"), Player(name: "Niklas", emoji: "👩🏼‍🚒"),
         Player(name: "Lærke", emoji: "💆🏼‍♀️"), Player(name: "Henrik", emoji: "👨🏼‍🍳"),
         Player(name: "Henriks søn", emoji: "⛹🏼")]
-    var currentQuestion: Question
-    var currentPlayer: Player
+    var currentQuestion: Question?
+    var currentPlayer: Player?
     
     var questions = [
         Question(description: "Hvad går den anden leg i Squid Game ud på?", points: 2,  answer: "Tug of war/Tovtrækning"),
@@ -65,7 +66,8 @@ class GameViewController: UIViewController {
         Question(description: "Min fisse er ...", points: 3,  answer: "❓"),
         Question(description: "Min pik er ...", points: 3,  answer: "🍆"),
         Question(description: "Sten, Saks, Papir", points: 2,  answer: "🗿✂️📄"),
-        Question(description: "Kategori", points: 3,  answer: "🗿✂️📄"),
+        Question(description: "Kategori", points: 3,  answer: "Ting"),
+        Question(description: "Hvilket fodboldhold er Lærke fan af?", points: 3,  answer: "Manchester City"),
     ]
     
     override func viewDidLoad() {
@@ -79,10 +81,18 @@ class GameViewController: UIViewController {
     }
     
     private func refresh() {
+        let sortedPlayers = players.sorted{$0.points > $1.points}
+        let firstPlacePlayer = sortedPlayers[0]
+        let secondPlacePlayer = sortedPlayers[1]
+        let thirdPlacePlayer = sortedPlayers[2]
+        let firstPlace = "🥇 \(firstPlacePlayer.name) \(firstPlacePlayer.emoji): \(firstPlacePlayer.points)\n\n"
+        let secondPlace = "🥈 \(secondPlacePlayer.name) \(secondPlacePlayer.emoji): \(secondPlacePlayer.points)\n\n"
+        let thirdPlace = "🥉 \(thirdPlacePlayer.name) \(thirdPlacePlayer.emoji): \(thirdPlacePlayer.points)"
+        leaderboardLabel.text = "\(firstPlace)\(secondPlace)\(thirdPlace)"
         answerLabel.isHidden = true
         let previousPlayer = activePlayerLabel.text
         currentPlayer = players.randomElement()!
-        while(previousPlayer == currentPlayer.name) {
+        while(previousPlayer == currentPlayer!.name) {
             currentPlayer = players.randomElement()!
         }
         if(questions.isEmpty) {
@@ -91,12 +101,12 @@ class GameViewController: UIViewController {
             activePlayerLabel.text = "Færdig"
         } else {
             currentQuestion = questions.randomElement()!
-            questions = questions.filter{$0.description != currentQuestion.description}
-            let points = currentQuestion.points == 1 ? "tår" : "tåre"
-            let newQuestion = "\(currentQuestion.description)\n\nTag \(currentQuestion.points) \(points) hvis du svarer forkert eller ikke vil svare ❌\n\nGiv 1 tår væk hvis du svarer rigtigt ✅"
+            questions = questions.filter{$0.description != currentQuestion!.description}
+            let points = currentQuestion!.points == 1 ? "tår" : "tåre"
+            let newQuestion = "\(currentQuestion!.description)\n\nTag \(currentQuestion!.points) \(points) hvis du svarer forkert eller ikke vil svare ❌\n\nGiv 1 tår væk hvis du svarer rigtigt ✅"
             changeText(newText: newQuestion, label: questionLabel)
-            changeText(newText: currentQuestion.answer, label: answerLabel)
-            changeText(newText: currentPlayer.name, label: activePlayerLabel)
+            changeText(newText: currentQuestion!.answer, label: answerLabel)
+            changeText(newText: currentPlayer!.name, label: activePlayerLabel)
         }
     }
     
@@ -112,14 +122,6 @@ class GameViewController: UIViewController {
             [] in label.text = newText
         }, completion: nil)
     }
-
-    @IBAction func rightAnswerPressed(_ sender: Any) {
-        currentPlayer.points += currentQuestion.points
-        refresh()
-    }
-    
-    @IBAction func wrongAnswerPressed(_ sender: Any) {
-    }
     
     @IBAction func showAnswerPressed(_ sender: Any) {
         answerLabel.isHidden = !answerLabel.isHidden
@@ -127,5 +129,15 @@ class GameViewController: UIViewController {
             [] in
         }, completion: nil)
     }
+    
+    @IBAction func correctAnswerPressed(_ sender: Any) {
+        currentPlayer!.points += currentQuestion!.points
+        refresh()
+    }
+    
+    @IBAction func wrongAnswerPressed(_ sender: Any) {
+        refresh()
+    }
+    
 }
 
