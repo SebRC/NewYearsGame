@@ -9,12 +9,12 @@ import Foundation
 
 public class Question {
     var description: String
-    var sips: Int
+    var points: Int
     var answer: String
     
-    init(description: String, sips: Int, answer: String) {
+    init(description: String, points: Int, answer: String) {
         self.description = description
-        self.sips = sips
+        self.points = points
         self.answer = answer
     }
 }
