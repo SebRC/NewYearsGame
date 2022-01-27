@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -33,21 +34,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fvQ-12-XEW">
-                                <rect key="frame" x="269" y="737" width="125" height="125"/>
-                                <color key="backgroundColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="125" id="Mxs-Dm-2QE"/>
-                                    <constraint firstAttribute="height" constant="125" id="N5z-bD-9bR"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Next question">
-                                    <color key="baseForegroundColor" systemColor="labelColor"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="nextQuestionPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dJC-QZ-vhh"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a13-lr-8SF">
                                 <rect key="frame" x="43" y="546" width="328" height="150"/>
                                 <constraints>
@@ -72,6 +58,33 @@
                                     <action selector="showAnswerPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xov-iL-kDG"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Zc-z5-QzE">
+                                <rect key="frame" x="269" y="737" width="125" height="44"/>
+                                <color key="backgroundColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="9Zc-z5-QzE" secondAttribute="height" multiplier="125:44" id="3ps-IK-odv"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Rigtigt svar"/>
+                                <connections>
+                                    <action selector="wrongAnswerPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="S0M-9F-SZW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fvQ-12-XEW">
+                                <rect key="frame" x="269" y="818" width="125" height="44"/>
+                                <color key="backgroundColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="125" id="Mxs-Dm-2QE"/>
+                                    <constraint firstAttribute="height" constant="44" id="N5z-bD-9bR"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Forkert svar">
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="nextQuestionPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dJC-QZ-vhh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <constraints>
@@ -83,19 +96,22 @@
                             <constraint firstAttribute="bottom" secondItem="e98-6Y-sGQ" secondAttribute="bottom" constant="34" id="RlI-W1-EkK"/>
                             <constraint firstItem="a13-lr-8SF" firstAttribute="top" secondItem="Ev9-kV-OAL" secondAttribute="bottom" constant="8" id="WGs-zt-lZm"/>
                             <constraint firstItem="fvQ-12-XEW" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-20" id="Xri-pb-uEe"/>
+                            <constraint firstItem="fvQ-12-XEW" firstAttribute="top" secondItem="9Zc-z5-QzE" secondAttribute="bottom" constant="37" id="bER-YK-9xG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="a13-lr-8SF" secondAttribute="trailing" constant="43" id="eNc-ff-UPl"/>
                             <constraint firstAttribute="bottom" secondItem="fvQ-12-XEW" secondAttribute="bottom" constant="34" id="jOu-ip-rU2"/>
                             <constraint firstItem="e98-6Y-sGQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="qcu-he-mc0"/>
                             <constraint firstItem="Ev9-kV-OAL" firstAttribute="top" secondItem="1bM-7u-B4L" secondAttribute="bottom" constant="25" id="thE-LM-j2B"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9Zc-z5-QzE" secondAttribute="trailing" constant="20" id="wiF-Xi-o0v"/>
                             <constraint firstItem="1bM-7u-B4L" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="xFR-jJ-WAx"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="activePlayerLabel" destination="1bM-7u-B4L" id="1JD-19-LTn"/>
                         <outlet property="answerLabel" destination="a13-lr-8SF" id="w2d-fJ-Wqd"/>
-                        <outlet property="nextQuestionButton" destination="fvQ-12-XEW" id="hZz-08-Jsr"/>
+                        <outlet property="correctAnswerButton" destination="9Zc-z5-QzE" id="4TN-Ba-hUB"/>
                         <outlet property="questionLabel" destination="Ev9-kV-OAL" id="kE0-d9-a2m"/>
                         <outlet property="showAnswerButton" destination="e98-6Y-sGQ" id="kPB-DJ-tLL"/>
+                        <outlet property="wrongAnswerButton" destination="fvQ-12-XEW" id="hZz-08-Jsr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

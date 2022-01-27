@@ -11,9 +11,10 @@ class GameViewController: UIViewController {
 
     @IBOutlet weak var activePlayerLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet weak var nextQuestionButton: UIButton!
+    @IBOutlet weak var wrongAnswerButton: UIButton!
     @IBOutlet weak var showAnswerButton: UIButton!
     @IBOutlet weak var answerLabel: UILabel!
+    @IBOutlet weak var correctAnswerButton: UIButton!
     
     var players = [Player(name: "Seb", emoji: "👨🏼‍💻"), Player(name: "Amalie", emoji: "👩‍👧‍👦"),
         Player(name: "Laura", emoji: "👩‍👧‍👦"), Player(name: "Niklas", emoji: "👩🏼‍🚒"),
@@ -67,8 +68,11 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        styleButton(button: nextQuestionButton, text: "Næste")
-        styleButton(button: showAnswerButton, text: "Vis svar")
+        wrongAnswerButton.setTitle("Forkert svar", for: .normal)
+        styleButton(button: wrongAnswerButton, text: "Forkert svar", cornerRadius: 5)
+        styleButton(button: correctAnswerButton, text: "Rigtigt svar", cornerRadius: 5)
+        let showAnswerCornerRadius = showAnswerButton.frame.size.width / 2
+        styleButton(button: showAnswerButton, text: "Vis svar", cornerRadius: showAnswerCornerRadius)
         refresh()
     }
     
@@ -94,12 +98,10 @@ class GameViewController: UIViewController {
         }
     }
     
-    fileprivate func styleButton(button: UIButton, text: String) {
+    fileprivate func styleButton(button: UIButton, text: String, cornerRadius: Double) {
         button.setTitle(text, for: .normal)
-        button.layer.cornerRadius = 10
         button.layer.masksToBounds = false
-        button.clipsToBounds = true
-        button.layer.cornerRadius = button.frame.size.width / 2
+        button.layer.cornerRadius = cornerRadius
         button.clipsToBounds = true
     }
     
@@ -109,8 +111,11 @@ class GameViewController: UIViewController {
         }, completion: nil)
     }
 
-    @IBAction func nextQuestionPressed(_ sender: Any) {
+    @IBAction func rightAnswerPressed(_ sender: Any) {
         refresh()
+    }
+    
+    @IBAction func wrongAnswerPressed(_ sender: Any) {
     }
     
     @IBAction func showAnswerPressed(_ sender: Any) {
