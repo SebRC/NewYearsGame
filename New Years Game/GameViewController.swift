@@ -131,13 +131,33 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func correctAnswerPressed(_ sender: Any) {
+        createEmojis(emojis: ["🎉": 50, "🥳": 30, "🎈": 40, "🍾": 25, "🤓": 35])
         currentPlayer!.points += currentQuestion!.points
         refresh()
     }
     
     @IBAction func wrongAnswerPressed(_ sender: Any) {
+        createEmojis(emojis: ["💩": 50])
         refresh()
     }
     
+    private func createEmojis(emojis: [String: Int]) {
+        for _ in 1...50 {
+            let size = emojis.randomElement()!.value
+            let startingPoint = Int.random(in: 20..<Int(self.view.frame.width))
+            let endPoint = Int.random(in: 20..<Int(self.view.frame.width))
+            let emojiLabelView = UILabel(frame: CGRect(x: startingPoint, y: Int(self.view.frame.height), width: size, height: size))
+            emojiLabelView.font = UIFont.systemFont(ofSize: CGFloat(size))
+            self.view.addSubview(emojiLabelView)
+            emojiLabelView.text = emojis.randomElement()!.key
+            UIView.animate(withDuration: Double.random(in: 1..<5), animations: {
+                emojiLabelView.frame.origin.x = CGFloat(endPoint)
+                emojiLabelView.frame.origin.y = -100
+            }, completion: {_ in
+                emojiLabelView.removeFromSuperview()
+            })
+            
+        }
+    }
 }
 
