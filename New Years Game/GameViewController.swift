@@ -92,7 +92,7 @@ class GameViewController: UIViewController {
         answerLabel.isHidden = true
         let previousPlayer = activePlayerLabel.text
         currentPlayer = players.randomElement()!
-        while(previousPlayer == currentPlayer!.name) {
+        while(previousPlayer == "\(currentPlayer!.name) \(currentPlayer!.emoji)") {
             currentPlayer = players.randomElement()!
         }
         if(questions.isEmpty) {
@@ -106,7 +106,7 @@ class GameViewController: UIViewController {
             let newQuestion = "\(currentQuestion!.description)\n\nTag \(currentQuestion!.points) \(points) hvis du svarer forkert eller ikke vil svare ❌\n\nGiv 1 tår væk hvis du svarer rigtigt ✅"
             changeText(newText: newQuestion, label: questionLabel)
             changeText(newText: currentQuestion!.answer, label: answerLabel)
-            changeText(newText: currentPlayer!.name, label: activePlayerLabel)
+            changeText(newText: "\(currentPlayer!.name) \(currentPlayer!.emoji)", label: activePlayerLabel)
         }
     }
     
