@@ -14,6 +14,7 @@
 		519753EE277F41FF00D8DE34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 519753ED277F41FF00D8DE34 /* Assets.xcassets */; };
 		519753F1277F41FF00D8DE34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 519753EF277F41FF00D8DE34 /* LaunchScreen.storyboard */; };
 		519753F9277F432E00D8DE34 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519753F8277F432E00D8DE34 /* Question.swift */; };
+		519ED51727A329F300785BCE /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519ED51627A329F300785BCE /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		519753F0277F41FF00D8DE34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		519753F2277F41FF00D8DE34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		519753F8277F432E00D8DE34 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		519ED51627A329F300785BCE /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				519753EF277F41FF00D8DE34 /* LaunchScreen.storyboard */,
 				519753F2277F41FF00D8DE34 /* Info.plist */,
 				519753F8277F432E00D8DE34 /* Question.swift */,
+				519ED51627A329F300785BCE /* Player.swift */,
 			);
 			path = "New Years Game";
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 				519753E9277F41FE00D8DE34 /* GameViewController.swift in Sources */,
 				519753F9277F432E00D8DE34 /* Question.swift in Sources */,
 				519753E5277F41FE00D8DE34 /* AppDelegate.swift in Sources */,
+				519ED51727A329F300785BCE /* Player.swift in Sources */,
 				519753E7277F41FE00D8DE34 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

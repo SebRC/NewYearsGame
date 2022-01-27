@@ -15,7 +15,11 @@ class GameViewController: UIViewController {
     @IBOutlet weak var showAnswerButton: UIButton!
     @IBOutlet weak var answerLabel: UILabel!
     
-    var players = ["Seb 👨🏼‍💻", "Amalie 👩‍👧‍👦", "Emilie 👩🏼‍⚕️", "Jonas 👨🏻‍⚖️"]
+    var players = [Player(name: "Seb", emoji: "👨🏼‍💻"), Player(name: "Amalie", emoji: "👩‍👧‍👦"),
+        Player(name: "Laura", emoji: "👩‍👧‍👦"), Player(name: "Niklas", emoji: "👩🏼‍🚒"),
+        Player(name: "Lærke", emoji: "💆🏼‍♀️"), Player(name: "Henrik", emoji: "👨🏼‍🍳"),
+        Player(name: "Henriks søn", emoji: "⛹🏼")]
+    
     var questions = [
         Question(description: "Hvad går den anden leg i Squid Game ud på?", sips: 2,  answer: "Tug of war/Tovtrækning"),
         Question(description: "Hvem er ældst?", sips: 5,  answer: "Jonas"),
@@ -72,7 +76,7 @@ class GameViewController: UIViewController {
         answerLabel.isHidden = true
         let previousPlayer = activePlayerLabel.text;
         var activePlayer = players.randomElement()
-        while(previousPlayer == activePlayer) {
+        while(previousPlayer == activePlayer!.name) {
             activePlayer = players.randomElement()
         }
         if(questions.isEmpty) {
@@ -86,7 +90,7 @@ class GameViewController: UIViewController {
             let newQuestion = "\(question!.description)\n\nTag \(question!.sips) \(sips) hvis du svarer forkert eller ikke vil svare ❌\n\nGiv 1 tår væk hvis du svarer rigtigt ✅"
             changeText(newText: newQuestion, label: questionLabel)
             changeText(newText: question!.answer, label: answerLabel)
-            changeText(newText: activePlayer!, label: activePlayerLabel)
+            changeText(newText: activePlayer!.name, label: activePlayerLabel)
         }
     }
     
