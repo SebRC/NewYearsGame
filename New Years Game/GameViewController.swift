@@ -101,6 +101,17 @@ class GameViewController: UIViewController {
         for view in thirdPlaceStackView.subviews {
             view.backgroundColor = .clear
         }
+        firstPlaceNameLabel.text = "🥇 \(players[0].name)"
+        firstPlaceEmojiLabel.text = players[0].emoji
+        firstPlacePointsLabel.text = String(players[0].points)
+        
+        secondPlaceNameLabel.text = "🥈 \(players[1].name)"
+        secondPlaceEmojiLabel.text = players[1].emoji
+        secondPlacePointsLabel.text = String(players[1].points)
+        
+        thirdPlaceNameLabel.text = "🥉 \(players[2].name)"
+        thirdPlaceEmojiLabel.text = players[2].emoji
+        thirdPlacePointsLabel.text = String(players[2].points)
         refresh(correctAnswer: false, isFirstQuestion: true)
         view.backgroundColor = primaryColor
         //setBackgroundGradient()
