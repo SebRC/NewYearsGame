@@ -150,7 +150,7 @@ class GameViewController: UIViewController {
             currentPlayer = players.randomElement()!
         }
         if(questions.isEmpty) {
-            createEmojis(emojis: ["🏆": 60, "🇩🇰": 80])
+            createEmojis(emojis: ["🏆": 60, "🇩🇰": 80, "🎁": 70])
             let winner = sortedPlayers[0]
             var rankings = ""
             for index in 0..<sortedPlayers.count {
