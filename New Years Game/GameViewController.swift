@@ -48,14 +48,14 @@ class GameViewController: UIViewController {
         Question(description: "Hvem er sejest?", points: 2,  answer: "Amalie 😊"),
         Question(description: "Fortæl to sandheder og en løgn", points: 3,  answer: "❓"),
         Question(description: "Hvor langt nåede det danske fodboldslandshold til EM 2020 og hvem slog dem ud?", points: 2,  answer: "Semifinalerne. De blev slået ud af England."),
-        Question(description: "Hvem blev den første private borger til at rejse ud i rummet i deres eget rumskib?", points: 2,  answer: "Richard Branson. Han gjorde det 9 dage før Jeff Bezos."),
+        Question(description: "Hvem blev den første private borger til at rejse ud i rummet i deres eget rumskib?", points: 3,  answer: "Richard Branson. Han gjorde det 9 dage før Jeff Bezos."),
         Question(description: "Hvad er det vildste du har gjort i dit liv?", points: 2,  answer: "❓"),
         Question(description: "Hvilket job forestillede du dig du skulle have da du var barn?", points: 1,  answer: "❓"),
         Question(description: "Hvis du kunne vælge en superkræft, hvad skulle det så være og hvorfor?", points: 2,  answer: "❓"),
         Question(description: "Hvor mange mål lukkede det danske fodboldslandshold ind i VM kvalifikationen til Qatar 2022?", points: 1,  answer: "3"),
         Question(description: "Hvad bliver det legendariske Arsenal hold fra 2003-2004 sæsonen kaldt?", points: 2,  answer: "The Invincibles 🏆"),
         Question(description: "Hvad er det dummeste du har gjort mens du var fuld?", points: 2,  answer: "🍻❓"),
-        Question(description: "Hvad er den mest irriterende vane du har?", points: 5,  answer: "🤬❓"),
+        Question(description: "Hvad er den mest irriterende vane du har?", points: 2,  answer: "🤬❓"),
         Question(description: "Hvad er det dummeste du har gjort som barn?", points: 3,  answer: "👶🏼❓"),
         Question(description: "Hvad er det pinligste du har grædt over?", points: 1,  answer: "❓"),
         Question(description: "Hvilket dyr minder mest om din højre sidemand og hvorfor?", points: 2,  answer: "❓"),
@@ -83,6 +83,7 @@ class GameViewController: UIViewController {
         Question(description: "Kategori 3", points: 3,  answer: "Ting"),
         Question(description: "Hvilket fodboldhold er Lærke fan af?", points: 3,  answer: "Manchester City"),
         Question(description: "Hvem er Lærkes yndlings fodboldspiller?", points: 3,  answer: "Spørg Lærke"),
+        Question(description: "Hvad er Arsenals motto?", points: 10,  answer: "Victoria Concordia Crescit(Victory Through Harmony)"),
     ]
     
     var primaryColor = UIColor(red: 105 / 255.0, green: 219 / 255.0, blue: 204 / 255, alpha: 1.0)
