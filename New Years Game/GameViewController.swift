@@ -64,7 +64,7 @@ class GameViewController: UIViewController {
         Question(description: "Nyn din yndlingssang", points: 1,  answer: "🎶"),
         Question(description: "Mim en berømt. Du kan se hvem du skal mime i svarfeltet.", points: 2,  answer: "Mette Frederiksen"),
         Question(description: "Min fisse er ...", points: 3,  answer: "❓"),
-        Question(description: "Min pik er ...", points: 3,  answer: "🍆"),
+        Question(description: "Lærke er ...", points: 3,  answer: "💆🏼‍♀️"),
         Question(description: "Sten, Saks, Papir", points: 2,  answer: "🗿✂️📄"),
         Question(description: "Kategori", points: 3,  answer: "Ting"),
         Question(description: "Hvilket fodboldhold er Lærke fan af?", points: 3,  answer: "Manchester City"),
@@ -88,7 +88,7 @@ class GameViewController: UIViewController {
         let firstPlace = "🥇 \(firstPlacePlayer.name) \(firstPlacePlayer.emoji): \(firstPlacePlayer.points)\n\n"
         let secondPlace = "🥈 \(secondPlacePlayer.name) \(secondPlacePlayer.emoji): \(secondPlacePlayer.points)\n\n"
         let thirdPlace = "🥉 \(thirdPlacePlayer.name) \(thirdPlacePlayer.emoji): \(thirdPlacePlayer.points)"
-        leaderboardLabel.text = "\(firstPlace)\(secondPlace)\(thirdPlace)"
+        changeText(newText: "\(firstPlace)\(secondPlace)\(thirdPlace)", label: leaderboardLabel)
         answerLabel.isHidden = true
         let previousPlayer = activePlayerLabel.text
         currentPlayer = players.randomElement()!
