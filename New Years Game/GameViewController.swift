@@ -25,7 +25,9 @@ class GameViewController: UIViewController {
     @IBOutlet weak var thirdPlaceNameLabel: UILabel!
     @IBOutlet weak var thirdPlaceEmojiLabel: UILabel!
     @IBOutlet weak var thirdPlacePointsLabel: UILabel!
-    
+    @IBOutlet weak var firstPlaceStackView: UIStackView!
+    @IBOutlet weak var secondPlaceStackView: UIStackView!
+    @IBOutlet weak var thirdPlaceStackView: UIStackView!
     
     var players = [Player(name: "Seb", emoji: "👨🏼‍💻"), Player(name: "Amalie", emoji: "👩‍👧‍👦"),
         Player(name: "Laura", emoji: "👩‍👧‍👦"), Player(name: "Niklas", emoji: "👩🏼‍🚒"),
@@ -158,16 +160,22 @@ class GameViewController: UIViewController {
     }
     
     fileprivate func updateLeaderBoard(firstPlace: Player, secondPlace: Player, thirdPlace: Player) {
-        UIView.transition(with: leaderboardView, duration: 0.5, options: .transitionFlipFromLeft, animations: {
+        UIView.transition(with: firstPlaceStackView, duration: 0.5, options: .transitionFlipFromBottom, animations: {
             [] in
             self.firstPlaceNameLabel.text = "🥇 \(firstPlace.name)"
             self.firstPlaceEmojiLabel.text = firstPlace.emoji
             self.firstPlacePointsLabel.text = String(firstPlace.points)
-            
+        }, completion: nil)
+        
+        UIView.transition(with: secondPlaceStackView, duration: 0.5, options: .transitionFlipFromBottom, animations: {
+            [] in
             self.secondPlaceNameLabel.text = "🥈 \(secondPlace.name)"
             self.secondPlaceEmojiLabel.text = secondPlace.emoji
             self.secondPlacePointsLabel.text = String(secondPlace.points)
-            
+        }, completion: nil)
+        
+        UIView.transition(with: thirdPlaceStackView, duration: 0.5, options: .transitionFlipFromBottom, animations: {
+            [] in
             self.thirdPlaceNameLabel.text = "🥉 \(thirdPlace.name)"
             self.thirdPlaceEmojiLabel.text = thirdPlace.emoji
             self.thirdPlacePointsLabel.text = String(thirdPlace.points)

@@ -244,15 +244,18 @@
                         <outlet property="firstPlaceEmojiLabel" destination="qHd-Ip-520" id="aSR-Yt-frX"/>
                         <outlet property="firstPlaceNameLabel" destination="H0s-v6-lxk" id="x4Q-8A-t9q"/>
                         <outlet property="firstPlacePointsLabel" destination="uuk-c2-iVj" id="0cF-0Z-Mbo"/>
+                        <outlet property="firstPlaceStackView" destination="h58-zq-BRO" id="Leg-5L-Wwt"/>
                         <outlet property="leaderboardView" destination="P55-pu-aQF" id="qu9-Pf-nTa"/>
                         <outlet property="questionLabel" destination="Ev9-kV-OAL" id="kE0-d9-a2m"/>
                         <outlet property="secondPlaceEmojiLabel" destination="qgU-k9-WOx" id="xzJ-DP-72B"/>
                         <outlet property="secondPlaceNameLabel" destination="eXB-7g-nh4" id="Ylu-fR-gHb"/>
                         <outlet property="secondPlacePointsLabel" destination="hge-f8-8um" id="Zch-j0-ewg"/>
+                        <outlet property="secondPlaceStackView" destination="lWA-lW-gRE" id="PDu-JY-2A5"/>
                         <outlet property="showAnswerButton" destination="e98-6Y-sGQ" id="kPB-DJ-tLL"/>
                         <outlet property="thirdPlaceEmojiLabel" destination="xXR-oM-HGM" id="QMC-Ie-zY6"/>
                         <outlet property="thirdPlaceNameLabel" destination="5vV-YE-1cK" id="vC9-zv-v0v"/>
                         <outlet property="thirdPlacePointsLabel" destination="jS4-sp-0dB" id="vj8-L7-rBq"/>
+                        <outlet property="thirdPlaceStackView" destination="E19-hl-DRF" id="caZ-mr-4HA"/>
                         <outlet property="wrongAnswerButton" destination="fvQ-12-XEW" id="hZz-08-Jsr"/>
                     </connections>
                 </viewController>
