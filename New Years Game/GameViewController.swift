@@ -80,8 +80,8 @@ class GameViewController: UIViewController {
         Question(description: "Hvem er Lærkes yndlings fodboldspiller?", points: 3,  answer: "Spørg Lærke"),
     ]
     
-    var primaryColor = UIColor(red: 184 / 255.0, green: 184 / 255.0, blue: 184 / 255, alpha: 1.0)
-    var secondaryColor = UIColor(red: 150 / 255.0, green: 150 / 255.0, blue: 200 / 255, alpha: 1.0)
+    var primaryColor = UIColor(red: 105 / 255.0, green: 219 / 255.0, blue: 204 / 255, alpha: 1.0)
+    var secondaryColor = UIColor(red: 137 / 255.0, green: 210 / 255.0, blue: 224 / 255, alpha: 1.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
