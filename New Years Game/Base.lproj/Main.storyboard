@@ -17,15 +17,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" lineBreakMode="tailTruncation" numberOfLines="15" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ev9-kV-OAL">
-                                <rect key="frame" x="20" y="172.5" width="374" height="379"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ymx-UC-BOY">
+                                <rect key="frame" x="20" y="173" width="374" height="379"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" lineBreakMode="tailTruncation" numberOfLines="15" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ev9-kV-OAL">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="379"/>
+                                        <color key="backgroundColor" red="0.10160704149999999" green="0.53345959600000004" blue="0.0093670592750000007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Ev9-kV-OAL" secondAttribute="height" multiplier="374:379" id="zCk-ip-MfP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Ev9-kV-OAL" secondAttribute="height" multiplier="328:281" constant="-68.39145907473312" id="6BT-vs-QrH"/>
+                                    <constraint firstItem="Ev9-kV-OAL" firstAttribute="leading" secondItem="ymx-UC-BOY" secondAttribute="leading" id="2oL-lB-CaX"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ev9-kV-OAL" secondAttribute="trailing" id="Iet-s5-7Qn"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ev9-kV-OAL" secondAttribute="bottom" id="PF3-9N-ygy"/>
+                                    <constraint firstAttribute="width" secondItem="ymx-UC-BOY" secondAttribute="height" multiplier="374:379" id="S2Y-Je-TKf"/>
+                                    <constraint firstItem="Ev9-kV-OAL" firstAttribute="top" secondItem="ymx-UC-BOY" secondAttribute="top" id="u2M-MR-RJd"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a13-lr-8SF">
                                 <rect key="frame" x="20" y="559.5" width="374" height="150"/>
                                 <constraints>
@@ -231,20 +245,20 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <constraints>
-                            <constraint firstItem="Ev9-kV-OAL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="0aj-UD-wgf"/>
-                            <constraint firstItem="Ev9-kV-OAL" firstAttribute="top" secondItem="P55-pu-aQF" secondAttribute="bottom" constant="24.5" id="1pj-Gb-3cF"/>
-                            <constraint firstItem="a13-lr-8SF" firstAttribute="trailing" secondItem="Ev9-kV-OAL" secondAttribute="trailing" id="4cI-0v-7DZ"/>
+                            <constraint firstItem="ymx-UC-BOY" firstAttribute="trailing" secondItem="1bM-7u-B4L" secondAttribute="trailing" id="7qg-3f-FiH"/>
                             <constraint firstItem="P55-pu-aQF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Boc-EQ-9Eu"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ev9-kV-OAL" secondAttribute="trailing" constant="20" id="Heu-My-P7P"/>
-                            <constraint firstItem="Ev9-kV-OAL" firstAttribute="trailing" secondItem="TTv-HO-Kuv" secondAttribute="trailing" id="Q4q-k5-fZZ"/>
+                            <constraint firstItem="ymx-UC-BOY" firstAttribute="top" secondItem="P55-pu-aQF" secondAttribute="bottom" constant="25" id="RI3-yt-ECd"/>
                             <constraint firstItem="a13-lr-8SF" firstAttribute="trailing" secondItem="TTv-HO-Kuv" secondAttribute="trailing" id="RRb-f8-HJm"/>
                             <constraint firstItem="Brr-bB-deR" firstAttribute="centerX" secondItem="a13-lr-8SF" secondAttribute="centerX" id="Rea-Eh-T03"/>
                             <constraint firstItem="TTv-HO-Kuv" firstAttribute="bottom" secondItem="P55-pu-aQF" secondAttribute="bottom" id="Rz9-b5-h9B"/>
-                            <constraint firstItem="a13-lr-8SF" firstAttribute="leading" secondItem="Ev9-kV-OAL" secondAttribute="leading" id="TQj-Oc-8DA"/>
-                            <constraint firstItem="a13-lr-8SF" firstAttribute="top" secondItem="Ev9-kV-OAL" secondAttribute="bottom" constant="8" id="WGs-zt-lZm"/>
+                            <constraint firstItem="a13-lr-8SF" firstAttribute="top" secondItem="ymx-UC-BOY" secondAttribute="bottom" constant="7.5" id="ab9-E3-6cx"/>
                             <constraint firstItem="Brr-bB-deR" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="cy7-RM-e7O"/>
+                            <constraint firstItem="ymx-UC-BOY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="dXH-9A-nYZ"/>
                             <constraint firstItem="TTv-HO-Kuv" firstAttribute="leading" secondItem="P55-pu-aQF" secondAttribute="trailing" constant="16" id="fAy-eW-VNf"/>
                             <constraint firstItem="TTv-HO-Kuv" firstAttribute="top" secondItem="P55-pu-aQF" secondAttribute="top" id="lLP-Nq-qEx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ymx-UC-BOY" secondAttribute="trailing" constant="20" id="mEg-m2-IfX"/>
+                            <constraint firstItem="ymx-UC-BOY" firstAttribute="leading" secondItem="a13-lr-8SF" secondAttribute="leading" id="nny-SV-wGm"/>
+                            <constraint firstItem="ymx-UC-BOY" firstAttribute="trailing" secondItem="a13-lr-8SF" secondAttribute="trailing" id="p2P-DI-yc2"/>
                             <constraint firstItem="P55-pu-aQF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="wXl-ki-UF6"/>
                         </constraints>
                     </view>
@@ -259,6 +273,7 @@
                         <outlet property="firstPlaceStackView" destination="h58-zq-BRO" id="Leg-5L-Wwt"/>
                         <outlet property="leaderboardView" destination="P55-pu-aQF" id="qu9-Pf-nTa"/>
                         <outlet property="questionLabel" destination="Ev9-kV-OAL" id="kE0-d9-a2m"/>
+                        <outlet property="questionView" destination="ymx-UC-BOY" id="jDE-tE-Wp4"/>
                         <outlet property="secondPlaceEmojiLabel" destination="qgU-k9-WOx" id="xzJ-DP-72B"/>
                         <outlet property="secondPlaceNameLabel" destination="eXB-7g-nh4" id="Ylu-fR-gHb"/>
                         <outlet property="secondPlacePointsLabel" destination="hge-f8-8um" id="Zch-j0-ewg"/>

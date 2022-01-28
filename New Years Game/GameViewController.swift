@@ -29,6 +29,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var secondPlaceStackView: UIStackView!
     @IBOutlet weak var thirdPlaceStackView: UIStackView!
     @IBOutlet weak var activePlayerView: UIView!
+    @IBOutlet weak var questionView: UIView!
     
     var players = [Player(name: "Seb", emoji: "👨🏼‍💻"), Player(name: "Amalie", emoji: "👩‍👧‍👦"),
         Player(name: "Laura", emoji: "👩‍👧‍👦"), Player(name: "Niklas", emoji: "👩🏼‍🚒"),
@@ -89,11 +90,13 @@ class GameViewController: UIViewController {
         styleButton(button: wrongAnswerButton)
         styleButton(button: correctAnswerButton)
         styleButton(button: showAnswerButton)
-        styleView(view: questionLabel)
         styleView(view: answerLabel)
         styleView(view: leaderboardView)
         styleView(view: activePlayerView)
         activePlayerLabel.backgroundColor = .clear
+        
+        styleView(view: questionView)
+        questionLabel.backgroundColor = .clear
         for view in firstPlaceStackView.subviews {
             view.backgroundColor = .clear
         }
@@ -158,9 +161,9 @@ class GameViewController: UIViewController {
             currentQuestion = questions.randomElement()!
             questions = questions.filter{$0.description != currentQuestion!.description}
             let newQuestion = "\(currentQuestion!.description)\n\nDer er \(currentQuestion!.points) point på spil."
-            changeText(newText: newQuestion, label: questionLabel)
-            changeText(newText: currentQuestion!.answer, label: answerLabel)
-            changeText(newText: "\(currentPlayer!.name) \(currentPlayer!.emoji)", label: activePlayerLabel)
+            changeText(newText: newQuestion, label: questionLabel, view: questionView)
+            //changeText(newText: currentQuestion!.answer, label: answerLabel)
+            changeText(newText: "\(currentPlayer!.name) \(currentPlayer!.emoji)", label: activePlayerLabel, view: activePlayerView)
         }
         setShowAnswerButtonImage(isHidden: true)
     }
@@ -187,8 +190,8 @@ class GameViewController: UIViewController {
         view.layer.shadowOpacity = 0.5
     }
     
-    fileprivate func changeText(newText: String, label: UILabel) {
-        UIView.transition(with: label, duration: 0.5, options: .transitionFlipFromLeft, animations: {
+    fileprivate func changeText(newText: String, label: UILabel, view: UIView) {
+        UIView.transition(with: view, duration: 0.5, options: .transitionFlipFromLeft, animations: {
             [] in label.text = newText
         }, completion: nil)
     }
