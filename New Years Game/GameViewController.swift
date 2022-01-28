@@ -88,19 +88,18 @@ class GameViewController: UIViewController {
         styleButton(button: wrongAnswerButton)
         styleButton(button: correctAnswerButton)
         styleButton(button: showAnswerButton)
-        //styleView(view: leaderboardLabel)
         styleView(view: activePlayerLabel)
         styleView(view: questionLabel)
         styleView(view: answerLabel)
         styleView(view: leaderboardView)
         for view in firstPlaceStackView.subviews {
-            view.backgroundColor = secondaryColor
+            view.backgroundColor = .clear
         }
         for view in secondPlaceStackView.subviews {
-            view.backgroundColor = secondaryColor
+            view.backgroundColor = .clear
         }
         for view in thirdPlaceStackView.subviews {
-            view.backgroundColor = secondaryColor
+            view.backgroundColor = .clear
         }
         refresh(correctAnswer: false)
         view.backgroundColor = primaryColor
@@ -129,7 +128,8 @@ class GameViewController: UIViewController {
             currentPlayer = players.randomElement()!
         }
         if(questions.isEmpty) {
-            questionLabel.text = "Det var det sidste spørgsmål"
+            let winner = sortedPlayers[0]
+            questionLabel.text = "Det var det sidste spørgsmål\n\nVinderen er \(winner.name) \(winner.emoji) med \(winner.points) point!"
             answerLabel.text = "Vi har ikke flere svar 😱"
             activePlayerLabel.text = "Færdig"
         } else {

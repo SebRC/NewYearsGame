@@ -32,7 +32,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="1bM-7u-B4L" secondAttribute="height" multiplier="11:1" constant="-973" id="6DF-Og-8gK"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
