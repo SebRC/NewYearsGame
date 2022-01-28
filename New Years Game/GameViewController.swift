@@ -30,6 +30,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var thirdPlaceStackView: UIStackView!
     @IBOutlet weak var activePlayerView: UIView!
     @IBOutlet weak var questionView: UIView!
+    @IBOutlet weak var answerView: UIView!
     
     var players = [Player(name: "Seb", emoji: "👨🏼‍💻"), Player(name: "Amalie", emoji: "👩‍👧‍👦"),
         Player(name: "Laura", emoji: "👩‍👧‍👦"), Player(name: "Niklas", emoji: "👩🏼‍🚒"),
@@ -90,13 +91,15 @@ class GameViewController: UIViewController {
         styleButton(button: wrongAnswerButton)
         styleButton(button: correctAnswerButton)
         styleButton(button: showAnswerButton)
-        styleView(view: answerLabel)
         styleView(view: leaderboardView)
         styleView(view: activePlayerView)
         activePlayerLabel.backgroundColor = .clear
         
         styleView(view: questionView)
         questionLabel.backgroundColor = .clear
+        
+        styleView(view: answerView)
+        answerLabel.backgroundColor = .clear
         for view in firstPlaceStackView.subviews {
             view.backgroundColor = .clear
         }
@@ -140,7 +143,7 @@ class GameViewController: UIViewController {
         } else if(!correctAnswer  && !questions.isEmpty && !isFirstQuestion){
             createEmojis(emojis: ["💩": 50])
         }
-        answerLabel.isHidden = true
+        answerView.isHidden = true
         let previousPlayer = activePlayerLabel.text
         currentPlayer = players.randomElement()!
         while(previousPlayer == "\(currentPlayer!.name) \(currentPlayer!.emoji)") {
@@ -162,7 +165,7 @@ class GameViewController: UIViewController {
             questions = questions.filter{$0.description != currentQuestion!.description}
             let newQuestion = "\(currentQuestion!.description)\n\nDer er \(currentQuestion!.points) point på spil."
             changeText(newText: newQuestion, label: questionLabel, view: questionView)
-            //changeText(newText: currentQuestion!.answer, label: answerLabel)
+            answerLabel.text = currentQuestion!.answer
             changeText(newText: "\(currentPlayer!.name) \(currentPlayer!.emoji)", label: activePlayerLabel, view: activePlayerView)
         }
         setShowAnswerButtonImage(isHidden: true)
@@ -220,27 +223,27 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func showAnswerPressed(_ sender: Any) {
-        let frame = answerLabel.frame
-        let isHidden = answerLabel.isHidden
+        let frame = answerView.frame
+        let isHidden = answerView.isHidden
         if(isHidden) {
-            answerLabel.frame = CGRect(x: -400, y: frame.origin.y, width: frame.width, height: frame.height)
+            answerView.frame = CGRect(x: -400, y: frame.origin.y, width: frame.width, height: frame.height)
             UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .transitionCrossDissolve, animations: {
-                self.answerLabel.isHidden = false
-                self.answerLabel.frame = frame
+                self.answerView.isHidden = false
+                self.answerView.frame = frame
                 self.setShowAnswerButtonImage(isHidden: false)
             }, completion: {_ in
             })
         } else {
             
             UIView.animate(withDuration: 2, delay: 0, options: .transitionCrossDissolve, animations: {
-                self.answerLabel.frame = frame
-                self.answerLabel.isOpaque = true
-                self.answerLabel.layer.opacity = 0
+                self.answerView.frame = frame
+                self.answerView.isOpaque = true
+                self.answerView.layer.opacity = 0
                 self.setShowAnswerButtonImage(isHidden: true)
             }, completion: {_ in
-                self.answerLabel.isHidden = true
-                self.answerLabel.isOpaque = false
-                self.answerLabel.layer.opacity = 1
+                self.answerView.isHidden = true
+                self.answerView.isOpaque = false
+                self.answerView.layer.opacity = 1
             })
         }
     }
