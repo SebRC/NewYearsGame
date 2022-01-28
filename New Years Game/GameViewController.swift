@@ -47,12 +47,12 @@ class GameViewController: UIViewController {
         Question(description: "Hvad er det mærkeligste du nogensinde har drømt?", points: 2,  answer: "❓"),
         Question(description: "Hvem er sejest?", points: 2,  answer: "Amalie 😊"),
         Question(description: "Fortæl to sandheder og en løgn", points: 3,  answer: "❓"),
-        Question(description: "Hvor langt nåede det danske fodboldslandshold til EM og hvem slog dem ud?", points: 2,  answer: "Semifinalerne. De blev slået ud af England."),
+        Question(description: "Hvor langt nåede det danske fodboldslandshold til EM 2020 og hvem slog dem ud?", points: 2,  answer: "Semifinalerne. De blev slået ud af England."),
         Question(description: "Hvem blev den første private borger til at rejse ud i rummet i deres eget rumskib?", points: 2,  answer: "Richard Branson. Han gjorde det 9 dage før Jeff Bezos."),
         Question(description: "Hvad er det vildste du har gjort i dit liv?", points: 2,  answer: "❓"),
         Question(description: "Hvilket job forestillede du dig du skulle have da du var barn?", points: 1,  answer: "❓"),
         Question(description: "Hvis du kunne vælge en superkræft, hvad skulle det så være og hvorfor?", points: 2,  answer: "❓"),
-        Question(description: "Hvor mange mål lukkede det danske fodboldslandshold ind i VM kvalifikationen?", points: 1,  answer: "3"),
+        Question(description: "Hvor mange mål lukkede det danske fodboldslandshold ind i VM kvalifikationen til Qatar 2022?", points: 1,  answer: "3"),
         Question(description: "Hvad bliver det legendariske Arsenal hold fra 2003-2004 sæsonen kaldt?", points: 2,  answer: "The Invincibles 🏆"),
         Question(description: "Hvad er det dummeste du har gjort mens du var fuld?", points: 2,  answer: "🍻❓"),
         Question(description: "Hvad er den mest irriterende vane du har?", points: 5,  answer: "🤬❓"),
@@ -63,22 +63,24 @@ class GameViewController: UIViewController {
         Question(description: "Hvad kommer efter 20?", points: 2,  answer: "21"),
         Question(description: "Hvor gammel er Beyonce?", points: 2,  answer: "40"),
         Question(description: "Bum leg", points: 3,  answer: "Bum"),
-        Question(description: "Finish the lyrics:\nLil Nas X Send her back to her boyfriend with my handprint on her ...", points: 2,  answer: "ass cheek"),
-        Question(description: "Finish the lyrics:\nEd Sheeran My bad habits lead to ...", points: 2,  answer: "late nights ending alone"),
-        Question(description: "Finish the lyrics:\nPSY Oppan Ganganm Style ...", points: 2,  answer: "Ehhh sexy lady"),
-        Question(description: "Finish the lyrics: In the jungle, the mighty jungle ...", points: 2,  answer: "the lion sleeps tonight"),
+        Question(description: "Finish the lyrics\nLil Nas X: Send her back to her boyfriend with my handprint on her ...", points: 2,  answer: "ass cheek"),
+        Question(description: "Finish the lyrics\nEd Sheeran: My bad habits lead to ...", points: 2,  answer: "late nights ending alone"),
+        Question(description: "Finish the lyrics\nPSY: Oppan Ganganm Style ...", points: 2,  answer: "Ehhh sexy lady"),
+        Question(description: "Finish the lyrics In the jungle, the mighty jungle ...", points: 2,  answer: "the lion sleeps tonight"),
         Question(description: "Hvem blev kåret til den bedste kvindelige fodboldspiller i 2021?", points: 2,  answer: "Alexia Putellas ⚽️"),
-        Question(description: "Hvilken placering fik det danske kvindehåndboldshold til VM?", points: 2,  answer: "Bronze"),
+        Question(description: "Hvilken placering fik det danske kvindehåndboldshold til VM i 2021?", points: 2,  answer: "Bronze"),
         Question(description: "Hvad er Bilkas slogan?", points: 2,  answer: "Hvem ka' Bilka"),
         Question(description: "Hvad er Burger Kings slogan?", points: 2,  answer: "Have It Your Way"),
         Question(description: "Hvad er L'Oreals slogan?", points: 2,  answer: "Because you're worth it"),
         Question(description: "Hvad hedder tigeren i Peter Plys?", points: 3,  answer: "Tigerdyr"),
-        Question(description: "Tegn tre dyr. Dem der først gætter det må give en tår væk. De må ikke give til tegneren.", points: 3,  answer: "🐯🐶🐣"),
+        Question(description: "Tegn et dyr. Hvis dyret bliver gættet får tegneren point.", points: 3,  answer: "🐯🐶🐣"),
         Question(description: "Nyn din yndlingssang", points: 1,  answer: "🎶"),
         Question(description: "Mim en berømt. Du kan se hvem du skal mime i svarfeltet.", points: 2,  answer: "Mette Frederiksen"),
         Question(description: "Lærke er ...", points: 3,  answer: "💆🏼‍♀️"),
         Question(description: "Sten, Saks, Papir", points: 2,  answer: "🗿✂️📄"),
-        Question(description: "Kategori", points: 3,  answer: "Ting"),
+        Question(description: "Kategori 1", points: 3,  answer: "Ting"),
+        Question(description: "Kategori 2", points: 3,  answer: "Ting"),
+        Question(description: "Kategori 3", points: 3,  answer: "Ting"),
         Question(description: "Hvilket fodboldhold er Lærke fan af?", points: 3,  answer: "Manchester City"),
         Question(description: "Hvem er Lærkes yndlings fodboldspiller?", points: 3,  answer: "Spørg Lærke"),
     ]
@@ -122,7 +124,6 @@ class GameViewController: UIViewController {
         thirdPlacePointsLabel.text = String(players[2].points)
         refresh(correctAnswer: false, isFirstQuestion: true)
         view.backgroundColor = primaryColor
-        //setBackgroundGradient()
     }
     
     private func setBackgroundGradient() {
