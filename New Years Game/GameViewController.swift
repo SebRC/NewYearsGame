@@ -38,6 +38,11 @@ class GameViewController: UIViewController {
         Player(name: "Henriks søn", emoji: "⛹🏼")]
     var currentQuestion: Question?
     var currentPlayer: Player?
+    var currentIndex = 0
+    var isRandom = false
+    
+    var primaryColor = UIColor(red: 105 / 255.0, green: 219 / 255.0, blue: 204 / 255, alpha: 1.0)
+    var secondaryColor = UIColor(red: 137 / 255.0, green: 210 / 255.0, blue: 224 / 255, alpha: 1.0)
     
     var questions = [
         Question(description: "Hvad går den tredje leg i Squid Game ud på?", points: 2,  answer: "Tug of war/Tovtrækning"),
@@ -85,9 +90,6 @@ class GameViewController: UIViewController {
         Question(description: "Hvem er Lærkes yndlings fodboldspiller?", points: 3,  answer: "Spørg Lærke"),
         Question(description: "Hvad er Arsenals motto?", points: 10,  answer: "Victoria Concordia Crescit(Victory Through Harmony)"),
     ]
-    
-    var primaryColor = UIColor(red: 105 / 255.0, green: 219 / 255.0, blue: 204 / 255, alpha: 1.0)
-    var secondaryColor = UIColor(red: 137 / 255.0, green: 210 / 255.0, blue: 224 / 255, alpha: 1.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -146,11 +148,7 @@ class GameViewController: UIViewController {
             createEmojis(emojis: ["💩": 50])
         }
         answerView.isHidden = true
-        let previousPlayer = activePlayerLabel.text
-        currentPlayer = players.randomElement()!
-        while(previousPlayer == "\(currentPlayer!.name) \(currentPlayer!.emoji)") {
-            currentPlayer = players.randomElement()!
-        }
+        pickPlayer(isFirstQuestion: isFirstQuestion)
         if(questions.isEmpty) {
             createEmojis(emojis: ["🏆": 60, "🇩🇰": 80, "🎁": 70])
             let winner = sortedPlayers[0]
@@ -171,6 +169,24 @@ class GameViewController: UIViewController {
             changeText(newText: "\(currentPlayer!.name) \(currentPlayer!.emoji)", label: activePlayerLabel, view: activePlayerView)
         }
         setShowAnswerButtonImage(isHidden: true)
+    }
+    
+    private func pickPlayer(isFirstQuestion: Bool) {
+        if(isRandom) {
+            let previousPlayer = activePlayerLabel.text
+            currentPlayer = players.randomElement()!
+            while(previousPlayer == "\(currentPlayer!.name) \(currentPlayer!.emoji)") {
+                currentPlayer = players.randomElement()!
+            }
+        } else {
+            if(isFirstQuestion) {
+                currentPlayer = players[0]
+            } else {
+                let nextIndex = currentIndex == players.count - 1 ? 0 : currentIndex + 1
+                currentPlayer = players[nextIndex]
+                currentIndex = nextIndex
+            }
+        }
     }
     
     fileprivate func styleButton(button: UIButton) {
