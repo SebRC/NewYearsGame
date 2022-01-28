@@ -92,7 +92,17 @@ class GameViewController: UIViewController {
         styleView(view: activePlayerLabel)
         styleView(view: questionLabel)
         styleView(view: answerLabel)
-        refresh()
+        styleView(view: leaderboardView)
+        for view in firstPlaceStackView.subviews {
+            view.backgroundColor = secondaryColor
+        }
+        for view in secondPlaceStackView.subviews {
+            view.backgroundColor = secondaryColor
+        }
+        for view in thirdPlaceStackView.subviews {
+            view.backgroundColor = secondaryColor
+        }
+        refresh(correctAnswer: false)
         view.backgroundColor = primaryColor
         //setBackgroundGradient()
     }
@@ -107,9 +117,11 @@ class GameViewController: UIViewController {
         self.view.layer.insertSublayer(gradient, at: 0)
     }
     
-    private func refresh() {
+    private func refresh(correctAnswer: Bool) {
         let sortedPlayers = players.sorted{$0.points > $1.points}
-        updateLeaderBoard(firstPlace: sortedPlayers[0], secondPlace: sortedPlayers[1], thirdPlace: sortedPlayers[2])
+        if(correctAnswer) {
+            updateLeaderBoard(firstPlace: sortedPlayers[0], secondPlace: sortedPlayers[1], thirdPlace: sortedPlayers[2])
+        }
         answerLabel.isHidden = true
         let previousPlayer = activePlayerLabel.text
         currentPlayer = players.randomElement()!
@@ -142,7 +154,7 @@ class GameViewController: UIViewController {
         button.layer.shadowOpacity = 0.5
     }
     
-    fileprivate func styleView(view: UILabel) {
+    fileprivate func styleView(view: UIView) {
         view.layer.masksToBounds = false
         view.layer.cornerRadius = 5
         view.clipsToBounds = false
@@ -214,14 +226,14 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func correctAnswerPressed(_ sender: Any) {
-        createEmojis(emojis: ["🎉": 50, "🥳": 30, "🎈": 40, "🍾": 25, "🤓": 35, "✅": 40])
+        createEmojis(emojis: ["🎉": 50, "🥳": 30, "🎈": 40, "🍾": 25, "🤓": 35, "✅": 40, "🤩": 35, "⭐️": 30])
         currentPlayer!.points += currentQuestion!.points
-        refresh()
+        refresh(correctAnswer: true)
     }
     
     @IBAction func wrongAnswerPressed(_ sender: Any) {
         createEmojis(emojis: ["💩": 50])
-        refresh()
+        refresh(correctAnswer: false)
     }
     
     private func createEmojis(emojis: [String: Int]) {
