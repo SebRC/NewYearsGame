@@ -226,26 +226,33 @@ class GameViewController: UIViewController {
         let frame = answerView.frame
         let isHidden = answerView.isHidden
         if(isHidden) {
-            answerView.frame = CGRect(x: -400, y: frame.origin.y, width: frame.width, height: frame.height)
-            UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .transitionCrossDissolve, animations: {
-                self.answerView.isHidden = false
-                self.answerView.frame = frame
-                self.setShowAnswerButtonImage(isHidden: false)
-            }, completion: {_ in
-            })
+            slideAnswerIn(frame: frame)
         } else {
-            
-            UIView.animate(withDuration: 2, delay: 0, options: .transitionCrossDissolve, animations: {
-                self.answerView.frame = frame
-                self.answerView.isOpaque = true
-                self.answerView.layer.opacity = 0
-                self.setShowAnswerButtonImage(isHidden: true)
-            }, completion: {_ in
-                self.answerView.isHidden = true
-                self.answerView.isOpaque = false
-                self.answerView.layer.opacity = 1
-            })
+            fadeAnswerOut(frame: frame)
         }
+    }
+    
+    private func slideAnswerIn(frame: CGRect) {
+        answerView.frame = CGRect(x: -400, y: frame.origin.y, width: frame.width, height: frame.height)
+        UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .transitionCrossDissolve, animations: {
+            self.answerView.isHidden = false
+            self.answerView.frame = frame
+            self.setShowAnswerButtonImage(isHidden: false)
+        }, completion: {_ in
+        })
+    }
+    
+    private func fadeAnswerOut(frame: CGRect) {
+        UIView.animate(withDuration: 2, delay: 0, options: .transitionCrossDissolve, animations: {
+            self.answerView.frame = frame
+            self.answerView.isOpaque = true
+            self.answerView.layer.opacity = 0
+            self.setShowAnswerButtonImage(isHidden: true)
+        }, completion: {_ in
+            self.answerView.isHidden = true
+            self.answerView.isOpaque = false
+            self.answerView.layer.opacity = 1
+        })
     }
     
     private func setShowAnswerButtonImage(isHidden: Bool) {
