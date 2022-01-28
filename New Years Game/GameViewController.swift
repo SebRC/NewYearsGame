@@ -237,10 +237,10 @@ class GameViewController: UIViewController {
     }
     
     private func createEmojis(emojis: [String: Int]) {
-        for _ in 1...50 {
+        for _ in 1...100 {
             let size = emojis.randomElement()!.value
-            let startingPoint = Int.random(in: 20..<Int(self.view.frame.width))
-            let endPoint = Int.random(in: 20..<Int(self.view.frame.width))
+            let startingPoint = Int.random(in: 0..<Int(self.view.frame.width))
+            let endPoint = Int.random(in: -20..<Int(self.view.frame.width))
             let emojiLabelView = UILabel(frame: CGRect(x: startingPoint, y: Int(self.view.frame.height), width: size, height: size))
             emojiLabelView.font = UIFont.systemFont(ofSize: CGFloat(size))
             self.view.addSubview(emojiLabelView)
