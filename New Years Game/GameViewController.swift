@@ -38,7 +38,7 @@ class GameViewController: UIViewController {
         Question(description: "Hvilket job forestillede du dig du skulle have da du var barn?", points: 1,  answer: "❓"),
         Question(description: "Hvis du kunne vælge en superkræft, hvad skulle det så være og hvorfor?", points: 2,  answer: "❓"),
         Question(description: "Hvor mange mål lukkede det danske fodboldslandshold ind i VM kvalifikationen?", points: 1,  answer: "3"),
-        Question(description: "Hvad bliver det legendariske Arsenal hold fra 2004-2004 sæsonen kaldt?", points: 2,  answer: "The Invincibles 🏆"),
+        Question(description: "Hvad bliver det legendariske Arsenal hold fra 2003-2004 sæsonen kaldt?", points: 2,  answer: "The Invincibles 🏆"),
         Question(description: "Hvad er det dummeste du har gjort mens du var fuld?", points: 2,  answer: "🍻❓"),
         Question(description: "Hvad er den mest irriterende vane du har?", points: 5,  answer: "🤬❓"),
         Question(description: "Hvad er det dummeste du har gjort som barn?", points: 3,  answer: "👶🏼❓"),
@@ -65,18 +65,23 @@ class GameViewController: UIViewController {
         Question(description: "Sten, Saks, Papir", points: 2,  answer: "🗿✂️📄"),
         Question(description: "Kategori", points: 3,  answer: "Ting"),
         Question(description: "Hvilket fodboldhold er Lærke fan af?", points: 3,  answer: "Manchester City"),
-        Question(description: "Hvem er Lærkes undlings fodboldspiller?", points: 3,  answer: "Spørg Lærke"),
+        Question(description: "Hvem er Lærkes yndlings fodboldspiller?", points: 3,  answer: "Spørg Lærke"),
     ]
+    
+    var primaryColor = UIColor(red: 184 / 255.0, green: 184 / 255.0, blue: 184 / 255, alpha: 1.0)
+    var secondaryColor = UIColor(red: 150 / 255.0, green: 150 / 255.0, blue: 200 / 255, alpha: 1.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         styleButton(button: wrongAnswerButton)
         styleButton(button: correctAnswerButton)
         styleButton(button: showAnswerButton)
-        styleView(view: leaderboardLabel, cornerRadius: 5)
-        styleView(view: activePlayerLabel, cornerRadius: 5)
+        styleView(view: leaderboardLabel)
+        styleView(view: activePlayerLabel)
+        styleView(view: questionLabel)
+        styleView(view: answerLabel)
         refresh()
-        view.backgroundColor = .lightGray
+        view.backgroundColor = primaryColor
         //setBackgroundGradient()
     }
     
@@ -117,23 +122,29 @@ class GameViewController: UIViewController {
             changeText(newText: currentQuestion!.answer, label: answerLabel)
             changeText(newText: "\(currentPlayer!.name) \(currentPlayer!.emoji)", label: activePlayerLabel)
         }
-        setShowAnswerButtonImage()
+        setShowAnswerButtonImage(isHidden: true)
     }
     
     fileprivate func styleButton(button: UIButton) {
         button.layer.masksToBounds = false
         button.layer.cornerRadius = button.frame.size.width / 2
         button.tintColor = .white
+        button.backgroundColor = secondaryColor
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOffset = CGSize(width: 1, height: 1)
         button.layer.shadowRadius = 5
         button.layer.shadowOpacity = 0.5
     }
     
-    fileprivate func styleView(view: UILabel, cornerRadius: Double) {
+    fileprivate func styleView(view: UILabel) {
         view.layer.masksToBounds = false
-        view.layer.cornerRadius = cornerRadius
-        view.clipsToBounds = true
+        view.layer.cornerRadius = 5
+        view.clipsToBounds = false
+        view.backgroundColor = secondaryColor
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = CGSize(width: 1, height: 1)
+        view.layer.shadowRadius = 5
+        view.layer.shadowOpacity = 0.5
     }
     
     fileprivate func changeText(newText: String, label: UILabel) {
@@ -143,15 +154,33 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func showAnswerPressed(_ sender: Any) {
-        answerLabel.isHidden = !answerLabel.isHidden
-        setShowAnswerButtonImage()
-        UIView.transition(with: answerLabel, duration: 0.5, options: .transitionFlipFromLeft, animations: {
-            [] in
-        }, completion: nil)
+        let frame = answerLabel.frame
+        let isHidden = answerLabel.isHidden
+        if(isHidden) {
+            answerLabel.frame = CGRect(x: -400, y: frame.origin.y, width: frame.width, height: frame.height)
+            UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .transitionCrossDissolve, animations: {
+                self.answerLabel.isHidden = false
+                self.answerLabel.frame = frame
+                self.setShowAnswerButtonImage(isHidden: false)
+            }, completion: {_ in
+            })
+        } else {
+            
+            UIView.animate(withDuration: 2, delay: 0, options: .transitionCrossDissolve, animations: {
+                self.answerLabel.frame = frame
+                self.answerLabel.isOpaque = true
+                self.answerLabel.layer.opacity = 0
+                self.setShowAnswerButtonImage(isHidden: true)
+            }, completion: {_ in
+                self.answerLabel.isHidden = true
+                self.answerLabel.isOpaque = false
+                self.answerLabel.layer.opacity = 1
+            })
+        }
     }
     
-    private func setShowAnswerButtonImage() {
-        let imageName = answerLabel.isHidden ? "eye.circle.fill" : "eye.slash.circle.fill"
+    private func setShowAnswerButtonImage(isHidden: Bool) {
+        let imageName = isHidden ? "eye.circle.fill" : "eye.slash.circle.fill"
         showAnswerButton.setImage(UIImage(systemName: imageName), for: .normal)
     }
     
@@ -175,6 +204,7 @@ class GameViewController: UIViewController {
             emojiLabelView.font = UIFont.systemFont(ofSize: CGFloat(size))
             self.view.addSubview(emojiLabelView)
             emojiLabelView.text = emojis.randomElement()!.key
+            
             UIView.animate(withDuration: Double.random(in: 1..<5), animations: {
                 emojiLabelView.frame.origin.x = CGFloat(endPoint)
                 emojiLabelView.frame.origin.y = -100
