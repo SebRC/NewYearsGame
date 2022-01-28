@@ -91,6 +91,8 @@ class GameViewController: UIViewController{
         Question(description: "I maj 2021 tog Lærke en tur med nogle veninder. Hvor tog hun hen?", points: 3,  answer: "Buddhi Camp 😋"),
         Question(description: "Hvilke karakterer fik Amalie og Laura i deres bachelor eksamener?", points: 3,  answer: "12 og 12 👩🏼‍🎓👩🏼‍🎓"),
         Question(description: "Hvad er Mette Frederiksens mellemnavn?", points: 3,  answer: "Hun har ikke et mellemnavn"),
+        Question(description: "Hvem vandt 3F Superligaen i 20/21?", points: 2,  answer: "Brøndby IF"),
+        Question(description: "Hvilken dansk film vandt Oscaren for Bedste internationale film i 2021?", points: 3,  answer: "Druk(Another Round)"),
     ]
     
     override func viewDidLoad() {
