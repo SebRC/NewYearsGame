@@ -70,12 +70,13 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        wrongAnswerButton.setTitle("Forkert svar", for: .normal)
-        styleButton(button: wrongAnswerButton, text: "Forkert svar", cornerRadius: 5)
-        styleButton(button: correctAnswerButton, text: "Rigtigt svar", cornerRadius: 5)
-        let showAnswerCornerRadius = showAnswerButton.frame.size.width / 2
-        styleButton(button: showAnswerButton, text: "Vis svar", cornerRadius: showAnswerCornerRadius)
+        styleButton(button: wrongAnswerButton)
+        styleButton(button: correctAnswerButton)
+        styleButton(button: showAnswerButton)
+        styleView(view: leaderboardLabel, cornerRadius: 5)
+        styleView(view: activePlayerLabel, cornerRadius: 5)
         refresh()
+        view.backgroundColor = .lightGray
         //setBackgroundGradient()
     }
     
@@ -111,18 +112,28 @@ class GameViewController: UIViewController {
         } else {
             currentQuestion = questions.randomElement()!
             questions = questions.filter{$0.description != currentQuestion!.description}
-            let newQuestion = "\(currentQuestion!.description)\n\nDer er \(currentQuestion!.points) på spil."
+            let newQuestion = "\(currentQuestion!.description)\n\nDer er \(currentQuestion!.points) point på spil."
             changeText(newText: newQuestion, label: questionLabel)
             changeText(newText: currentQuestion!.answer, label: answerLabel)
             changeText(newText: "\(currentPlayer!.name) \(currentPlayer!.emoji)", label: activePlayerLabel)
         }
+        setShowAnswerButtonImage()
     }
     
-    fileprivate func styleButton(button: UIButton, text: String, cornerRadius: Double) {
-        button.setTitle(text, for: .normal)
+    fileprivate func styleButton(button: UIButton) {
         button.layer.masksToBounds = false
-        button.layer.cornerRadius = cornerRadius
-        button.clipsToBounds = true
+        button.layer.cornerRadius = button.frame.size.width / 2
+        button.tintColor = .white
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 1, height: 1)
+        button.layer.shadowRadius = 5
+        button.layer.shadowOpacity = 0.5
+    }
+    
+    fileprivate func styleView(view: UILabel, cornerRadius: Double) {
+        view.layer.masksToBounds = false
+        view.layer.cornerRadius = cornerRadius
+        view.clipsToBounds = true
     }
     
     fileprivate func changeText(newText: String, label: UILabel) {
@@ -133,9 +144,15 @@ class GameViewController: UIViewController {
     
     @IBAction func showAnswerPressed(_ sender: Any) {
         answerLabel.isHidden = !answerLabel.isHidden
+        setShowAnswerButtonImage()
         UIView.transition(with: answerLabel, duration: 0.5, options: .transitionFlipFromLeft, animations: {
             [] in
         }, completion: nil)
+    }
+    
+    private func setShowAnswerButtonImage() {
+        let imageName = answerLabel.isHidden ? "eye.circle.fill" : "eye.slash.circle.fill"
+        showAnswerButton.setImage(UIImage(systemName: imageName), for: .normal)
     }
     
     @IBAction func correctAnswerPressed(_ sender: Any) {
