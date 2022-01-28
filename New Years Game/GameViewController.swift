@@ -1,14 +1,6 @@
-//
-//  ViewController.swift
-//  New Years Game
-//
-//  Created by Sebastian Christiansen on 31/12/2021.
-//
-
 import UIKit
 
-class GameViewController: UIViewController {
-
+class GameViewController: UIViewController{
     @IBOutlet weak var activePlayerLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var wrongAnswerButton: UIButton!
@@ -67,13 +59,13 @@ class GameViewController: UIViewController {
         Question(description: "Hvad kommer efter 20?", points: 2,  answer: "Politi 🚓"),
         Question(description: "Hvad kommer efter 20?", points: 2,  answer: "21"),
         Question(description: "Hvor gammel er Beyonce?", points: 2,  answer: "40"),
-        Question(description: "Bum leg", points: 3,  answer: "Bum"),
-        Question(description: "Finish the lyrics\nLil Nas X: Send her back to her boyfriend with my handprint on her ...", points: 2,  answer: "ass cheek"),
+        Question(description: "Bum leg", points: 2,  answer: "Bum"),
+        Question(description: "Finish the lyrics\nOtto Brandenburg: Jeg ved en ... jeg siger ikke mer", points: 2,  answer: "lærkerede 🕊"),
         Question(description: "Finish the lyrics\nEd Sheeran: My bad habits lead to ...", points: 2,  answer: "late nights ending alone"),
         Question(description: "Finish the lyrics\nPSY: Oppan Ganganm Style ...", points: 2,  answer: "Ehhh sexy lady"),
-        Question(description: "Finish the lyrics In the jungle, the mighty jungle ...", points: 2,  answer: "the lion sleeps tonight"),
+        Question(description: "Finish the lyrics In the jungle, the mighty jungle ...", points: 2,  answer: "the lion sleeps tonight 🦁"),
         Question(description: "Hvem blev kåret til den bedste kvindelige fodboldspiller i 2021?", points: 2,  answer: "Alexia Putellas ⚽️"),
-        Question(description: "Hvilken placering fik det danske kvindehåndboldshold til VM i 2021?", points: 2,  answer: "Bronze"),
+        Question(description: "Hvilken placering fik det danske kvindehåndboldshold til VM i 2021?", points: 2,  answer: "Bronze 🥉"),
         Question(description: "Hvad er Bilkas slogan?", points: 2,  answer: "Hvem ka' Bilka"),
         Question(description: "Hvad er Burger Kings slogan?", points: 2,  answer: "Have It Your Way"),
         Question(description: "Hvad er L'Oreals slogan?", points: 2,  answer: "Because you're worth it"),
@@ -83,12 +75,22 @@ class GameViewController: UIViewController {
         Question(description: "Mim en berømt. Du kan se hvem du skal mime i svarfeltet.", points: 2,  answer: "Mette Frederiksen"),
         Question(description: "Lærke er ...", points: 3,  answer: "💆🏼‍♀️"),
         Question(description: "Sten, Saks, Papir", points: 2,  answer: "🗿✂️📄"),
-        Question(description: "Kategori 1", points: 3,  answer: "Ting"),
-        Question(description: "Kategori 2", points: 3,  answer: "Ting"),
-        Question(description: "Kategori 3", points: 3,  answer: "Ting"),
-        Question(description: "Hvilket fodboldhold er Lærke fan af?", points: 3,  answer: "Manchester City"),
+        Question(description: "Kategori 1", points: 3, answer: "Ting 1"),
+        Question(description: "Kategori 2", points: 3, answer: "Ting 2"),
+        Question(description: "Kategori 3", points: 3, answer: "Ting 3"),
+        Question(description: "Hvilket fodboldhold er Lærke fan af?", points: 3,  answer: "Manchester City 🔵"),
         Question(description: "Hvem er Lærkes yndlings fodboldspiller?", points: 3,  answer: "Spørg Lærke"),
         Question(description: "Hvad er Arsenals motto?", points: 10,  answer: "Victoria Concordia Crescit(Victory Through Harmony)"),
+        Question(description: "Hvor gammel bliver Lærke?", points: 1,  answer: "50, men hun ser ikke ud som en dag over 25 😯"),
+        Question(description: "Hvem er Lærkes yndlings svigersøn?", points: 3,  answer: "Det er selvfølgelig både Niklas og Seb 🤝"),
+        Question(description: "Hvor mange Spider-Man film er der lavet med de tre nyeste skuspillere i rollen(Toby Maguire, Andrew Garfield, Tom Holland)?", points: 3,  answer: "8 🕷"),
+        Question(description: "Hvad hedder den andelsforening Lærke bor i?", points: 5,  answer: "A/B Sandkagen 🍰"),
+        Question(description: "Hvor gammel er Mini?", points: 3,  answer: "Spørg Lærke 🐩"),
+        Question(description: "Hvad hedder Laura og Niklas hund?", points: 3,  answer: "Sofus 🐶"),
+        Question(description: "Hvad hedder ham den lækre sundhedsminister?", points: 3,  answer: "Magnus Heunicke 😍"),
+        Question(description: "I maj 2021 tog Lærke en tur med nogle veninder. Hvor tog hun hen?", points: 3,  answer: "Buddhi Camp 😋"),
+        Question(description: "Hvilke karakterer fik Amalie og Laura i deres bachelor eksamener?", points: 3,  answer: "12 og 12 👩🏼‍🎓👩🏼‍🎓"),
+        Question(description: "Hvad er Mette Frederiksens mellemnavn?", points: 3,  answer: "Hun har ikke et mellemnavn"),
     ]
     
     override func viewDidLoad() {
