@@ -15,7 +15,17 @@ class GameViewController: UIViewController {
     @IBOutlet weak var showAnswerButton: UIButton!
     @IBOutlet weak var answerLabel: UILabel!
     @IBOutlet weak var correctAnswerButton: UIButton!
-    @IBOutlet weak var leaderboardLabel: UILabel!
+    @IBOutlet weak var leaderboardView: UIView!
+    @IBOutlet weak var firstPlaceNameLabel: UILabel!
+    @IBOutlet weak var firstPlaceEmojiLabel: UILabel!
+    @IBOutlet weak var firstPlacePointsLabel: UILabel!
+    @IBOutlet weak var secondPlaceNameLabel: UILabel!
+    @IBOutlet weak var secondPlaceEmojiLabel: UILabel!
+    @IBOutlet weak var secondPlacePointsLabel: UILabel!
+    @IBOutlet weak var thirdPlaceNameLabel: UILabel!
+    @IBOutlet weak var thirdPlaceEmojiLabel: UILabel!
+    @IBOutlet weak var thirdPlacePointsLabel: UILabel!
+    
     
     var players = [Player(name: "Seb", emoji: "👨🏼‍💻"), Player(name: "Amalie", emoji: "👩‍👧‍👦"),
         Player(name: "Laura", emoji: "👩‍👧‍👦"), Player(name: "Niklas", emoji: "👩🏼‍🚒"),
@@ -76,7 +86,7 @@ class GameViewController: UIViewController {
         styleButton(button: wrongAnswerButton)
         styleButton(button: correctAnswerButton)
         styleButton(button: showAnswerButton)
-        styleView(view: leaderboardLabel)
+        //styleView(view: leaderboardLabel)
         styleView(view: activePlayerLabel)
         styleView(view: questionLabel)
         styleView(view: answerLabel)
@@ -97,13 +107,7 @@ class GameViewController: UIViewController {
     
     private func refresh() {
         let sortedPlayers = players.sorted{$0.points > $1.points}
-        let firstPlacePlayer = sortedPlayers[0]
-        let secondPlacePlayer = sortedPlayers[1]
-        let thirdPlacePlayer = sortedPlayers[2]
-        let firstPlace = "🥇 \(firstPlacePlayer.name) \(firstPlacePlayer.emoji): \(firstPlacePlayer.points)\n\n"
-        let secondPlace = "🥈 \(secondPlacePlayer.name) \(secondPlacePlayer.emoji): \(secondPlacePlayer.points)\n\n"
-        let thirdPlace = "🥉 \(thirdPlacePlayer.name) \(thirdPlacePlayer.emoji): \(thirdPlacePlayer.points)"
-        changeText(newText: "\(firstPlace)\(secondPlace)\(thirdPlace)", label: leaderboardLabel)
+        updateLeaderBoard(firstPlace: sortedPlayers[0], secondPlace: sortedPlayers[1], thirdPlace: sortedPlayers[2])
         answerLabel.isHidden = true
         let previousPlayer = activePlayerLabel.text
         currentPlayer = players.randomElement()!
@@ -150,6 +154,23 @@ class GameViewController: UIViewController {
     fileprivate func changeText(newText: String, label: UILabel) {
         UIView.transition(with: label, duration: 0.5, options: .transitionFlipFromLeft, animations: {
             [] in label.text = newText
+        }, completion: nil)
+    }
+    
+    fileprivate func updateLeaderBoard(firstPlace: Player, secondPlace: Player, thirdPlace: Player) {
+        UIView.transition(with: leaderboardView, duration: 0.5, options: .transitionFlipFromLeft, animations: {
+            [] in
+            self.firstPlaceNameLabel.text = "🥇 \(firstPlace.name)"
+            self.firstPlaceEmojiLabel.text = firstPlace.emoji
+            self.firstPlacePointsLabel.text = String(firstPlace.points)
+            
+            self.secondPlaceNameLabel.text = "🥈 \(secondPlace.name)"
+            self.secondPlaceEmojiLabel.text = secondPlace.emoji
+            self.secondPlacePointsLabel.text = String(secondPlace.points)
+            
+            self.thirdPlaceNameLabel.text = "🥉 \(thirdPlace.name)"
+            self.thirdPlaceEmojiLabel.text = thirdPlace.emoji
+            self.thirdPlacePointsLabel.text = String(thirdPlace.points)
         }, completion: nil)
     }
     
