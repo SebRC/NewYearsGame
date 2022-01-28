@@ -28,6 +28,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var firstPlaceStackView: UIStackView!
     @IBOutlet weak var secondPlaceStackView: UIStackView!
     @IBOutlet weak var thirdPlaceStackView: UIStackView!
+    @IBOutlet weak var activePlayerView: UIView!
     
     var players = [Player(name: "Seb", emoji: "👨🏼‍💻"), Player(name: "Amalie", emoji: "👩‍👧‍👦"),
         Player(name: "Laura", emoji: "👩‍👧‍👦"), Player(name: "Niklas", emoji: "👩🏼‍🚒"),
@@ -88,10 +89,11 @@ class GameViewController: UIViewController {
         styleButton(button: wrongAnswerButton)
         styleButton(button: correctAnswerButton)
         styleButton(button: showAnswerButton)
-        styleView(view: activePlayerLabel)
         styleView(view: questionLabel)
         styleView(view: answerLabel)
         styleView(view: leaderboardView)
+        styleView(view: activePlayerView)
+        activePlayerLabel.backgroundColor = .clear
         for view in firstPlaceStackView.subviews {
             view.backgroundColor = .clear
         }
