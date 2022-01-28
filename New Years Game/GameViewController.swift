@@ -25,13 +25,12 @@ class GameViewController: UIViewController {
     var currentPlayer: Player?
     
     var questions = [
-        Question(description: "Hvad går den anden leg i Squid Game ud på?", points: 2,  answer: "Tug of war/Tovtrækning"),
-        Question(description: "Hvem er ældst?", points: 5,  answer: "Jonas"),
-        Question(description: "Hvilket år gik Emilie ud af gymnasiet?", points: 2,  answer: "Emilie kender svaret"),
+        Question(description: "Hvad går den tredje leg i Squid Game ud på?", points: 2,  answer: "Tug of war/Tovtrækning"),
+        Question(description: "Hvem er ældst?", points: 5,  answer: "Henrik"),
         Question(description: "Hvad er en Amager plade?", points: 2,  answer: "En tatovering lige over røven 🍑"),
         Question(description: "Hvad siger folk fra Amager når de sværger?", points: 2,  answer: "Amager halshug"),
         Question(description: "Hvad er det mærkeligste du nogensinde har drømt?", points: 2,  answer: "❓"),
-        Question(description: "Hvem er sejest?", points: 2,  answer: "Seb 😊"),
+        Question(description: "Hvem er sejest?", points: 2,  answer: "Amalie 😊"),
         Question(description: "Fortæl to sandheder og en løgn", points: 3,  answer: "❓"),
         Question(description: "Hvor langt nåede det danske fodboldslandshold til EM og hvem slog dem ud?", points: 2,  answer: "Semifinalerne. De blev slået ud af England."),
         Question(description: "Hvem blev den første private borger til at rejse ud i rummet i deres eget rumskib?", points: 2,  answer: "Richard Branson. Han gjorde det 9 dage før Jeff Bezos."),
@@ -60,14 +59,13 @@ class GameViewController: UIViewController {
         Question(description: "Hvad er L'Oreals slogan?", points: 2,  answer: "Because you're worth it"),
         Question(description: "Hvad hedder tigeren i Peter Plys?", points: 3,  answer: "Tigerdyr"),
         Question(description: "Tegn tre dyr. Dem der først gætter det må give en tår væk. De må ikke give til tegneren.", points: 3,  answer: "🐯🐶🐣"),
-        Question(description: "Jegt har aldrig med 3 liv. Du starter.", points: 3,  answer: "❓"),
         Question(description: "Nyn din yndlingssang", points: 1,  answer: "🎶"),
         Question(description: "Mim en berømt. Du kan se hvem du skal mime i svarfeltet.", points: 2,  answer: "Mette Frederiksen"),
-        Question(description: "Min fisse er ...", points: 3,  answer: "❓"),
         Question(description: "Lærke er ...", points: 3,  answer: "💆🏼‍♀️"),
         Question(description: "Sten, Saks, Papir", points: 2,  answer: "🗿✂️📄"),
         Question(description: "Kategori", points: 3,  answer: "Ting"),
         Question(description: "Hvilket fodboldhold er Lærke fan af?", points: 3,  answer: "Manchester City"),
+        Question(description: "Hvem er Lærkes undlings fodboldspiller?", points: 3,  answer: "Spørg Lærke"),
     ]
     
     override func viewDidLoad() {
@@ -78,6 +76,17 @@ class GameViewController: UIViewController {
         let showAnswerCornerRadius = showAnswerButton.frame.size.width / 2
         styleButton(button: showAnswerButton, text: "Vis svar", cornerRadius: showAnswerCornerRadius)
         refresh()
+        //setBackgroundGradient()
+    }
+    
+    private func setBackgroundGradient() {
+        let colorTop = UIColor.darkGray.cgColor
+        let colorBottom = UIColor.lightGray.cgColor
+
+        let gradient = CAGradientLayer()
+        gradient.colors = [colorBottom, colorTop, colorBottom]
+        gradient.frame = self.view.bounds
+        self.view.layer.insertSublayer(gradient, at: 0)
     }
     
     private func refresh() {
@@ -102,8 +111,7 @@ class GameViewController: UIViewController {
         } else {
             currentQuestion = questions.randomElement()!
             questions = questions.filter{$0.description != currentQuestion!.description}
-            let points = currentQuestion!.points == 1 ? "tår" : "tåre"
-            let newQuestion = "\(currentQuestion!.description)\n\nTag \(currentQuestion!.points) \(points) hvis du svarer forkert eller ikke vil svare ❌\n\nGiv 1 tår væk hvis du svarer rigtigt ✅"
+            let newQuestion = "\(currentQuestion!.description)\n\nDer er \(currentQuestion!.points) på spil."
             changeText(newText: newQuestion, label: questionLabel)
             changeText(newText: currentQuestion!.answer, label: answerLabel)
             changeText(newText: "\(currentPlayer!.name) \(currentPlayer!.emoji)", label: activePlayerLabel)
@@ -131,7 +139,7 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func correctAnswerPressed(_ sender: Any) {
-        createEmojis(emojis: ["🎉": 50, "🥳": 30, "🎈": 40, "🍾": 25, "🤓": 35])
+        createEmojis(emojis: ["🎉": 50, "🥳": 30, "🎈": 40, "🍾": 25, "🤓": 35, "✅": 40])
         currentPlayer!.points += currentQuestion!.points
         refresh()
     }
