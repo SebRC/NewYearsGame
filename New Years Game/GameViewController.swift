@@ -27,7 +27,7 @@ class GameViewController: UIViewController{
     var players = [Player(name: "Seb", emoji: "👨🏼‍💻"), Player(name: "Amalie", emoji: "👩‍👧‍👦"),
         Player(name: "Laura", emoji: "👩‍👧‍👦"), Player(name: "Niklas", emoji: "👩🏼‍🚒"),
         Player(name: "Lærke", emoji: "💆🏼‍♀️"), Player(name: "Henrik", emoji: "👨🏼‍🍳"),
-        Player(name: "Henriks søn", emoji: "⛹🏼")]
+        Player(name: "Jonathan", emoji: "⛹🏼")]
     var currentQuestion: Question?
     var currentPlayer: Player?
     var currentIndex = 0
@@ -155,6 +155,7 @@ class GameViewController: UIViewController{
         pickPlayer(isFirstQuestion: isFirstQuestion)
         if(questions.isEmpty) {
             createEmojis(emojis: ["🏆": 60, "🇩🇰": 80, "🎁": 70])
+            updateLeaderBoard(firstPlace: sortedPlayers[0], secondPlace: sortedPlayers[1], thirdPlace: sortedPlayers[2])
             let winner = sortedPlayers[0]
             var rankings = ""
             for index in 0..<sortedPlayers.count {
@@ -163,7 +164,7 @@ class GameViewController: UIViewController{
             }
             questionLabel.text = "Det var det sidste spørgsmål\nVinderen er \(winner.name) \(winner.emoji)🏆 med \(winner.points) point!\n\(rankings)"
             answerLabel.text = "Vi har ikke flere svar 😱"
-            activePlayerLabel.text = "🏆\n\(winner.name) \(winner.emoji)\n🏆"
+            activePlayerLabel.text = "🏆"
         } else {
             currentQuestion = questions.randomElement()!
             questions = questions.filter{$0.description != currentQuestion!.description}
@@ -194,6 +195,8 @@ class GameViewController: UIViewController{
     }
     
     fileprivate func styleButton(button: UIButton) {
+        button.setTitle("", for: .normal
+        )
         button.layer.masksToBounds = false
         button.layer.cornerRadius = button.frame.size.width / 2
         button.tintColor = .white
