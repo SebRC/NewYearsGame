@@ -162,7 +162,7 @@ class GameViewController: UIViewController{
                 let player = sortedPlayers[index]
                 rankings = "\(rankings)\n\(index + 1). \(player.name) \(player.emoji): \(player.points)"
             }
-            questionLabel.text = "Det var det sidste spørgsmål\nVinderen er \(winner.name) \(winner.emoji)🏆 med \(winner.points) point!\n\(rankings)"
+            questionLabel.text = "Det var det sidste spørgsmål\nVinderen er \(winner.name) \(winner.emoji)🏆 med \(winner.points) point!\(rankings)"
             answerLabel.text = "Vi har ikke flere svar 😱"
             activePlayerLabel.text = "🏆"
         } else {
