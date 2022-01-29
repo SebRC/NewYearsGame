@@ -11,10 +11,12 @@ public class Question {
     var description: String
     var points: Int
     var answer: String
+    var id: Int
     
-    init(description: String, points: Int, answer: String) {
+    init(description: String, points: Int, answer: String, id : Int) {
         self.description = description
         self.points = points
         self.answer = answer
+        self.id = id
     }
 }
