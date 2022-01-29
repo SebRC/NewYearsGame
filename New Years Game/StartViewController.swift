@@ -69,7 +69,8 @@ class StartViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        let destVC = segue.destination as! GameViewController
+        destVC.players = players
     }
     
     @IBAction func startPressed(_ sender: Any) {

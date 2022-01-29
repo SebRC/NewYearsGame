@@ -24,10 +24,7 @@ class GameViewController: UIViewController{
     @IBOutlet weak var questionView: UIView!
     @IBOutlet weak var answerView: UIView!
     
-    var players = [Player(name: "Amalie", emoji: "👩🏼‍🎨"),
-        Player(name: "Laura", emoji: "👩‍👧‍👦"), Player(name: "Niklas", emoji: "👩🏼‍🚒"),
-        Player(name: "Lærke", emoji: "💆🏼‍♀️"), Player(name: "Henrik", emoji: "👨🏼‍🍳"),
-        Player(name: "Jonathan", emoji: "⛹🏼")]
+    var players: [Player]!
     var currentQuestion: Question?
     var currentPlayer: Player?
     var currentIndex = 0
