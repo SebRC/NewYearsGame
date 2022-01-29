@@ -10,8 +10,6 @@ import UIKit
 class StartViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var startButton: UIButton!
-    @IBOutlet weak var playersView: UIView!
-    @IBOutlet weak var playersLabel: UILabel!
     
     var primaryColor = UIColor(red: 105 / 255.0, green: 219 / 255.0, blue: 204 / 255, alpha: 1.0)
     var secondaryColor = UIColor(red: 137 / 255.0, green: 210 / 255.0, blue: 224 / 255, alpha: 1.0)
@@ -23,6 +21,8 @@ class StartViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.hidesBackButton = true
+        navigationController?.isNavigationBarHidden = true
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .clear
@@ -32,12 +32,8 @@ class StartViewController: UIViewController, UITableViewDataSource, UITableViewD
         startButton.tintColor = .white
         startButton.backgroundColor = secondaryColor
         startButton.addShadow()
-        playersView.addShadow()
-        playersView.layer.cornerRadius = 5
-        playersView.backgroundColor = secondaryColor
-        playersLabel.text = "Spillere"
-        playersLabel.backgroundColor = .clear
         view.backgroundColor = primaryColor
+        tableView.largeContentTitle = "Spillere"
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -56,6 +52,20 @@ class StartViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.backgroundColor = secondaryColor
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        let label = UILabel(frame: CGRect(x: 0, y: -20, width: tableView.frame.width, height: 50))
+        label.text = "Spillere"
+        label.font = UIFont.systemFont(ofSize: 40)
+        label.textColor = .white
+        view.addSubview(label)
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
