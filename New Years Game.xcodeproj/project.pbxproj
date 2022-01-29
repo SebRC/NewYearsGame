@@ -15,6 +15,9 @@
 		519753F1277F41FF00D8DE34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 519753EF277F41FF00D8DE34 /* LaunchScreen.storyboard */; };
 		519753F9277F432E00D8DE34 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519753F8277F432E00D8DE34 /* Question.swift */; };
 		519ED51727A329F300785BCE /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519ED51627A329F300785BCE /* Player.swift */; };
+		51AF048027A56E5C004A6FCA /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF047F27A56E5C004A6FCA /* StartViewController.swift */; };
+		51AF048227A56F13004A6FCA /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF048127A56F13004A6FCA /* PlayerCell.swift */; };
+		51AF048427A575C6004A6FCA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF048327A575C6004A6FCA /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		519753F2277F41FF00D8DE34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		519753F8277F432E00D8DE34 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		519ED51627A329F300785BCE /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		51AF047F27A56E5C004A6FCA /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		51AF048127A56F13004A6FCA /* PlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
+		51AF048327A575C6004A6FCA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +75,9 @@
 				519753F2277F41FF00D8DE34 /* Info.plist */,
 				519753F8277F432E00D8DE34 /* Question.swift */,
 				519ED51627A329F300785BCE /* Player.swift */,
+				51AF047F27A56E5C004A6FCA /* StartViewController.swift */,
+				51AF048127A56F13004A6FCA /* PlayerCell.swift */,
+				51AF048327A575C6004A6FCA /* Extensions.swift */,
 			);
 			path = "New Years Game";
 			sourceTree = "<group>";
@@ -146,9 +155,12 @@
 			files = (
 				519753E9277F41FE00D8DE34 /* GameViewController.swift in Sources */,
 				519753F9277F432E00D8DE34 /* Question.swift in Sources */,
+				51AF048227A56F13004A6FCA /* PlayerCell.swift in Sources */,
+				51AF048427A575C6004A6FCA /* Extensions.swift in Sources */,
 				519753E5277F41FE00D8DE34 /* AppDelegate.swift in Sources */,
 				519ED51727A329F300785BCE /* Player.swift in Sources */,
 				519753E7277F41FE00D8DE34 /* SceneDelegate.swift in Sources */,
+				51AF048027A56E5C004A6FCA /* StartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

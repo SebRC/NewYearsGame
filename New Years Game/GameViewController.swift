@@ -102,6 +102,8 @@ class GameViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.hidesBackButton = true
+        navigationController?.isNavigationBarHidden = true
         styleButton(button: wrongAnswerButton)
         styleButton(button: correctAnswerButton)
         styleButton(button: showAnswerButton)
